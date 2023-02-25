@@ -47,15 +47,12 @@ class _countryPageState extends State<countryPage> {
                   });
                 },
 
-                // countryDropdownLabel: "*Country",
-                // stateDropdownLabel: "*State",
-                // cityDropdownLabel: "*City",
+              
                 dropdownDecoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     color: Colors.white,
                     border: Border.all(color: Colors.grey.shade300, width: 1)),
 
-                ///Disabled Dropdown box decoration to style your dropdown selector [OPTIONAL PARAMETER]  (USE with disabled dropdownDecoration)
                 disabledDropdownDecoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     color: Colors.grey.shade300,

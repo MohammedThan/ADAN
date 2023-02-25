@@ -16,10 +16,6 @@ class _ThikerPageState extends State<ThikerPage> {
         title: Text("Thiker"),
       ),
       body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        // Text(
-        //   'New Cars',
-        //   // style: header,
-        // ),
         SizedBox(
           height: 12,
         ),
@@ -41,11 +37,6 @@ class _ThikerPageState extends State<ThikerPage> {
           ),
           child: Row(
             children: [
-              // "icon",
-              // Image.asset(
-              //   'assets/porsche.png',
-              //   height: 60,
-              // ),
               SizedBox(
                 width: 12,
               ),

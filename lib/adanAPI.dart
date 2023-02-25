@@ -1,6 +1,4 @@
-// To parse this JSON data, do
-//
-//     final adan = adanFromJson(jsonString);
+
 
 import 'dart:convert';
 

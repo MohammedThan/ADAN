@@ -21,28 +21,7 @@ class homePage extends StatefulWidget {
 }
 
 class _homePageState extends State<homePage> {
-  // void initState() async {
-  //   var latLong = await _getGeoLocationPosition();
-  //   var address =
-  //   await GetAddressFromLatLong(latLong.latitude, latLong.longitude);
-  //   print(address);
-  //   super.initState();
-  // }
-  // initState() {
-  //   super.initState();
-  //   asyncMethod();
-  // }
-
-  // void asyncMethod() async {
-  //   <var> latLong = await _getGeoLocationPosition(),(){
-  //     return "Fds";
-  //   };
-  //   var address = await GetAddressFromLatLong(latLong.latitude, latLong.longitude);
-  //   print(address);
-  //   // ....
-  // }
-
-  // Future<dynamic> MyLocation() async {
+ 
   Future<Position> _getGeoLocationPosition() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -98,10 +77,6 @@ class _homePageState extends State<homePage> {
     }
   }
 
-  @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold();
-  // }
   String city = "your city";
   String country = "your country";
   bool firsttime = true;
@@ -128,19 +103,6 @@ class _homePageState extends State<homePage> {
 
   bool isNextSalah(Adan snapShopt, String salah) {
     DateTime now = DateTime.now();
-    // print(convDate(snapShopt.data.timings.fajr));
-    // if(snapShopt.data.timings.fajr.compareTo(now.hour.toString()+":"+now.minute.toString())==-1){
-    //   return "Fajr"==salah;
-    // } else if(snapShopt.data.timings.dhuhr.compareTo(now.hour.toString()+":"+now.minute.toString())==-1){
-    //   return "Dhuhr"==salah;
-    // } else if(snapShopt.data.timings.asr.compareTo(now.hour.toString()+":"+now.minute.toString())==-1){
-    //   return "Asr"==salah;
-    // } else if(snapShopt.data.timings.maghrib.compareTo(now.hour.toString()+":"+now.minute.toString())==-1){
-    //   return "Maghrib"==salah;
-    // } else if(snapShopt.data.timings.isha.compareTo(now.hour.toString()+":"+now.minute.toString())==-1){
-    //   return "Isha"==salah;
-    // }
-    // return false;
 
     if (now.isBefore(convDate(snapShopt.data.timings.fajr))) {
       return "Fajr" == salah;
@@ -173,28 +135,6 @@ class _homePageState extends State<homePage> {
 
   Widget build(BuildContext context) {
     hiveData hive = new hiveData();
-    // hive.deleteAllData();
-
-    // Future<List<String>> getKeys() async {
-    //   keys = await hive.getKeys();
-    //   print(keys);
-    //   return keys;
-    // }
-
-    // fuckKeys() async{
-
-    // }
-    // var test=getKeys();
-
-    // var keys = getKeys();
-
-    // void _showDate() async {
-    //    theDate = await showDatePicker(
-    //       context: context,
-    //       initialDate: theDate,
-    //       firstDate: DateTime(2000),
-    //       lastDate: DateTime(DateTime.now().year + 5));
-    // }
     API api = new API();
     return FutureBuilder(
         future: GetAddressFromLatLong(),
@@ -217,9 +157,6 @@ class _homePageState extends State<homePage> {
             }
             firsttime = false;
 
-            // country = snapshot.data.toString().substring(
-            //     snapshot.data.toString().indexOf(',') + 1,
-            //     snapshot.data.toString().length - 1);
 
             print("the city $city");
             print("the country $country");
@@ -239,11 +176,7 @@ class _homePageState extends State<homePage> {
                         appBar: AppBar(
                             backgroundColor: Colors.white,
                             elevation: 0,
-                            // title: Text('My adan',
-                            // style: TextStyle(
-                            //             fontSize: 24,
-                            //             color: Colors.black,
-                            //           )),
+                            
                             centerTitle: true,
                             leading: IconButton(
                               icon: const Icon(Icons.date_range),
@@ -267,11 +200,7 @@ class _homePageState extends State<homePage> {
                             ),
                             actions: [
                               PopupMenuButton(
-                                // icon: Icon(Icons.keyboard_arrow_down_sharp),
-                                // color: Theme.of(context).primaryColor,
-                                // child: Text('My Location'),
-
-                                // offset: const Offset(0, 40),
+                                
                                 child: (TextButton.icon(
                                   label: Text(
                                     style: TextStyle(
@@ -294,7 +223,6 @@ class _homePageState extends State<homePage> {
                                   ),
                                   icon: Icon(
                                     Icons.keyboard_arrow_down_sharp,
-                                    // color: Theme.of(context).primaryColor,
                                   ),
                                   onPressed: null,
                                 )),
@@ -306,8 +234,7 @@ class _homePageState extends State<homePage> {
                                   hive.saveData(city, country);
                                   print("\n the shit:");
                                   var keys = hive.getKeys();
-                                  // print(keys);
-                                  // print(keys.toString());
+                              
                                   return [
                                     for (var i = 0; i < keys.length; i++)
                                       PopupMenuItem(
@@ -316,22 +243,16 @@ class _homePageState extends State<homePage> {
                                                 hive.getData(keys[i])[1]);
                                           },
                                           value: hive.getData(keys[i][0]),
-                                          // child: Text("${hive.getData(keys[i])[0]}"),
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
                                                 '${hive.getData(keys[i])[0]}',
-                                                // style: product,
                                               ),
-                                              // Text("data"),
                                               Row(
                                                 children: [
-                                                  // Image.asset(
-                                                  //   'assets/mile.png',
-                                                  //   height: 16,
-                                                  // ),
+                                                  
                                                   SizedBox(
                                                     width: 4,
                                                   ),
@@ -346,19 +267,7 @@ class _homePageState extends State<homePage> {
                                           ))
                                   ];
                                 },
-                                // onSelected: (value) {
-                                //   var keys = hive.getKeys();
-                                //   print("aaaaaaaaaaaaaaaaaaaaaaa");
-                                //   print(value);
-                                //   print("aaaaaaaaaaaaaaaaaaaaaaa");
-
-                                //   for (var i = 0; i < keys.length; i++) {
-                                //     if (value == hive.getData(keys[i][0])) {
-                                //       refresh(hive.getData(keys[i][0])[0],
-                                //           hive.getData(keys[i][0])[1]);
-                                //     }
-                                //   }
-                                // }
+                                
                               )
                             ]),
                         body: Column(
@@ -400,90 +309,12 @@ class _homePageState extends State<homePage> {
                                 snapshot.data!.data.timings.isha,
                                 Icon(Icons.nights_stay),
                                 isNextSalah(snapshot.data!, "Isha")),
-                            // IconButton(
-                            //     onPressed: () async {
-                            //       print(theDate.toString().substring(0, 10));
-
-                            //       // var latLong = await _getGeoLocationPosition();
-                            //       // var address = await GetAddressFromLatLong(
-                            //       //     latLong.latitude, latLong.longitude);
-                            //       // print(address);
-                            //       print(city);
-                            //       // refresh("newCity");
-                            //       print(city);
-
-                            //       // GetAddressFromLatLong(await getpos)
-                            //       // Position position = await _getGeoLocationPosition();
-                            //       // print(position);
-                            //       // print(GetAddressFromLatLong(position));
-
-                            //       // var my = await MyLocation();
-                            //       // print(my);
-                            //     },
-                            //     icon: Icon(Icons.print))
+                           
   
 
                           ],
                         ),
-                      // bottomNavigationBar: Padding(
-                      //   padding: const EdgeInsets.all(8.0),
-                      //   child: (GNav(
-                      //             rippleColor: Colors
-                      //                 .grey, // tab button ripple color when pressed
-                      //             hoverColor:
-                      //                 Colors.blue, // tab button hover color
-                      //             haptic: true, // haptic feedback
-                      //             tabBorderRadius: 15,
-                      //             tabActiveBorder: Border.all(
-                      //                 color: Colors.black,
-                      //                 width: 1), // tab button border
-                      //             tabBorder: Border.all(
-                      //                 color: Colors.grey,
-                      //                 width: 1), // tab button border
-                      //             // tabShadow: [BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 8)], // tab button shadow
-                      //             backgroundColor: Colors.white,
-                      //             curve:
-                      //                 Curves.easeOutExpo, // tab animation curves
-                      //             duration: Duration(
-                      //                 milliseconds:
-                      //                     900), // tab animation duration
-                      //             gap:
-                      //                 8, // the tab button gap between icon and text
-                      //             color: Colors.black, // unselected icon color
-                      //             activeColor:
-                      //                 Colors.blue, // selected icon and text color
-                      //             iconSize: 24, // tab button icon size
-                      //             tabBackgroundColor: Colors.blue.withOpacity(
-                      //                 0.1), // selected tab background color
-                      //             padding: EdgeInsets.symmetric(
-                      //                 horizontal: 15,
-                      //                 vertical: 5), // navigation bar padding
-                      //             tabs: [
-                      //               GButton(
-                      //                 margin: EdgeInsets.symmetric(horizontal: 5),
-                      //                 icon: Icons.home,
-                      //                 text: 'Home',
-                      //                 onPressed: (index)=>Navigator.push(
-                      //                   context,
-                      //                   MaterialPageRoute(builder: (context) => homePage()),
-                      //                 ),
-                      //               ),
-                      //               GButton(
-                      //                 margin: EdgeInsets.symmetric(horizontal: 5),
-                      //                 icon: Icons.notifications_active,
-                      //                 text: 'Thikr',
-                      //               ),
-                      //               GButton(
-                      //                 margin: EdgeInsets.symmetric(horizontal: 5),
-                      //                 icon: Icons.location_on,
-                      //                 text: 'Location',
-                      //                 onPressed: (index)=>Navigator.push(
-                      //                   context,
-                      //                   MaterialPageRoute(builder: (context) => countryPage()),
-                      //                 ),
-                      //               ),
-                      //             ])),
-                      // ),
+                      
                       )
                     
                     );
@@ -493,14 +324,12 @@ class _homePageState extends State<homePage> {
         });
   }
 
-  // Widget myTable() {
   Widget myCard() {
     return Card(
       margin: const EdgeInsets.all(20),
       elevation: 20,
       shape: RoundedRectangleBorder(
         side: BorderSide(
-            // color: Theme.of(context).colorScheme.outline,
             ),
         borderRadius: const BorderRadius.all(Radius.circular(12)),
       ),
@@ -508,7 +337,6 @@ class _homePageState extends State<homePage> {
         padding: const EdgeInsets.all(8.0),
         child: Row(
 
-            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Text("Fajer"),
               Text("45"),
@@ -520,10 +348,7 @@ class _homePageState extends State<homePage> {
 
   Widget adanCard(String salah, String time, Icon icon, bool isNextSalah) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      // Text(
-      //   'New Cars',
-      //   // style: header,
-      // ),
+     
       SizedBox(
         height: 12,
       ),
@@ -546,10 +371,7 @@ class _homePageState extends State<homePage> {
         child: Row(
           children: [
             icon,
-            // Image.asset(
-            //   'assets/porsche.png',
-            //   height: 60,
-            // ),
+           
             SizedBox(
               width: 12,
             ),
@@ -562,24 +384,9 @@ class _homePageState extends State<homePage> {
                     color: Colors.black,
                   ),
                   salah,
-                  // style: product,
                 ),
-                // Text("data"),
-                // Row(
-                //   children: [
-                //     // Image.asset(
-                //     //   'assets/mile.png',
-                //     //   height: 16,
-                //     // ),
-                //     // SizedBox(
-                //     //   width: 4,
-                //     // ),
-                //     // Text(
-                //     //   '99 miles',
-                //     //   // style: small,
-                //     // ),
-                //   ],
-                // ),
+                
+                
               ],
             ),
             Spacer(),
@@ -617,7 +424,6 @@ class _homePageState extends State<homePage> {
                 color: Colors.black,
               ),
               time,
-              // style: subheader,
             ),
           ],
         ),

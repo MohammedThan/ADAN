@@ -10,7 +10,6 @@ class hiveData {
   }
 
   getData(String key)  {
-    // var tmp = await myBox.get(key);
     return  myBox.get(key);
   }
 
